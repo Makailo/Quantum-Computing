@@ -6,6 +6,7 @@
 \usepackage{csquotes}
 \usepackage{graphicx} % Inclusión de imágenes
 \usepackage[left=3cm, right=3cm]{geometry} % Márgenes e interlineado
+\usepackage{amsmath}
 \linespread{1.5}
 
 \bibliography{Otros cúbits superconductores}
@@ -41,15 +42,93 @@ En este trabajo se realiza una comparativa de los diferentes tipos de cúbits su
 
 \section{Fundamentos teóricos de la superconductividad}
 
-La superconductividad es un fenómeno cuántico que se produce en algunos materiales a muy bajas temperaturas, en el que los electrones que los forman se comportan de manera coordinada y sin resistencia eléctrica. Este fenómeno se basa en la existencia de una interacción atractiva y débil \cite{bardeen_theory_1957} entre los electrones de una red cristalina, lo que da lugar a la formación de pares de Cooper, que son los responsables del fenómeno de la superconductividad. Los pares de Cooper son dos electrones que se atraen mutuamente debido a la interacción con los fonones \cite{ferrell_knight_1959}. Estos pares tienen una energía menor que los electrones individuales, lo que significa que pueden moverse a través del cristal con menos resistencia. Es decir, los pares de Cooper pueden moverse sin disipar energía debido a las colisiones con los átomos de la red cristalina \cite{bardeen_microscopic_1957} al contrario que los electrones individuales no pueden moverse a través del cristal con libertad, ya que cualquier intento de hacerlo requeriría que se rompieran los pares de Cooper.
+La teoría de la superconductividad se basa en el modelo BCS propuesto por John Bardeen, Leon Cooper y Robert Schrieffer en 1957 \cite{bardeen_theory_1957}, que describe la formación de los pares de Cooper y cómo éstos se comportan en el material superconductor. Desde entonces, se han descubierto muchos materiales que presentan superconductividad a diferentes temperaturas, lo que ha permitido la construcción de cúbits superconductores basados en diferentes fenómenos cuánticos, como la carga, el flujo o la fase.
+
+La superconductividad es un fenómeno cuántico que se produce en algunos materiales a muy bajas temperaturas, en el que los electrones que los forman se comportan de manera coordinada y sin resistencia eléctrica. Este fenómeno se basa en la existencia de una interacción atractiva y débil \cite{bardeen_theory_1957} entre los electrones de una red cristalina, lo que da lugar a la formación de pares de Cooper, que son los responsables del fenómeno de la superconductividad. Los pares de Cooper son dos electrones que se atraen mutuamente debido a la interacción con los fonones \cite{ferrell_knight_1959}. Estos pares tienen una energía menor que los electrones individuales, lo que significa que pueden moverse a través del cristal con menos resistencia. Es decir, los pares de Cooper pueden moverse sin disipar energía debido a las colisiones con los átomos de la red cristalina \cite{bardeen_microscopic_1957}.
 
 Este fenómeno es esencial para el funcionamiento de los cúbits superconductores, ya que la ausencia de resistencia eléctrica permite que las corrientes circulen sin pérdidas y los estados cuánticos puedan mantenerse durante largos períodos de tiempo. Además, la superconductividad también permite la creación de campos magnéticos muy intensos \cite{tyler_measurements_2004}, lo que se utiliza en algunos tipos de cúbits para acoplarlos y controlar su evolución cuántica (cita).
 
-La teoría de la superconductividad se basa en el modelo BCS propuesto por John Bardeen, Leon Cooper y Robert Schrieffer en 1957 \cite{bardeen_theory_1957}, que describe la formación de los pares de Cooper y cómo éstos se comportan en el material superconductor. Desde entonces, se han descubierto muchos materiales que presentan superconductividad a diferentes temperaturas, lo que ha permitido la construcción de cúbits superconductores basados en diferentes fenómenos cuánticos, como la carga, el flujo o la fase.
-
 \section{Tipos de cúbits superconductores}
 
-[Texto de tipos de cúbits superconductores]
+En esta sección se describen algunos de los tipos más comunes de cúbits superconductores, incluyendo cúbits de carga, cúbits de flujo y cúbits de fase. Se discutirá brevemente cómo funcionan estos cúbits y cuáles son sus ventajas y desventajas. Los tres tipos de cúbits superconductores utilizan la unión Josephson como elemento fundamental para su funcionamiento debido a que se comporta como un sistema de dos niveles. 
+\subsection{Unión Josephson}
+
+La unión Josephson es un dispositivo compuesto por dos superconductores separados por una capa delgada de material no superconductor, conocida como barrera Josephson. En esta estructura, los pares de Cooper de los superconductores pueden atravesar la barrera gracias al efecto túnel cuántico (cita). La propiedad más importante de la unión Josephson en los cúbits es que cuando se aplica un voltaje entre los electrodos de la unión Josephson, se produce un flujo de corriente que oscila de manera periódica en el tiempo, lo que permite la generación de estados superpuestos y la realización de operaciones cuánticas lo que se denomina como efecto Josephson (cita).  \\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Josephson Juntion.png}
+    \caption{Unión Josephson y efecto túnel \cite{noauthor_squid_nodate}}
+    \label{fig:Unión Josephsone}
+  \end{figure}
+
+\subsection{Cúbit de carga}
+
+Un cúbit de carga, es un tipo de cúbit superconductor que se basa en la carga eléctrica para su funcionamiento. Está compuesto por una unión Josephson un condensador y una fuente de voltaje conectados en paralelo como se puede observar en la figura \ref{fig:Cúbit de carga}.\\
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.3\textwidth]{Qubit de carga.png}
+  \caption{Cúbit de carga \cite{gu_microwave_2017}}
+  \label{fig:Cúbit de carga}
+\end{figure}
+ 
+La unión tiene asociada una energía de acople $E_j$ que representa la energía máxima necesaria para que un par de Cooper la atraviese por efecto túnel. Se denomina $E_c$ a la energía debido a la carga de los condensadores ya que la separación entre el aislante y electrodos también actúa como un condensador y hay que incluirlo. Con el objetivo de conseguir un sistema de dos niveles, la unión Josephson se tiene que diseñar con una brecha superconductora $\Delta$ que sea mucho mayor que $E_c$ y $E_j$ y se logra el siguiente Hamiltoniano siendo $\Theta$ la diferencia de fase entre los superconductores, n el exceso de pare de Cooper en los electrodos y $n_g = C_gV_g/2e$ \cite{leonardo_qubits_2004}.
+\begin{equation} \label{eq:hamiltonian}
+  \widehat{H} = 4E_c(n-n_g)^2 - E_j\cos\Theta
+\end{equation}
+Si $n_g = m+1/2$ se forman dos estados con energías $m$ y $m + 1$ que corresponderán a los estados $|1\rangle$ y $|0\rangle$. A baja temperatura los demás estados tienen una probabilidad muy baja de ser ocupados.
+
+Si se reescribe el Hamiltoniano en función de los estados cuánticos \cite{gu_microwave_2017} ,
+\begin{equation} \label{eq:ket hamiltonian}
+  \widehat{H}  = 2E_c(1-2n_g)\{|1\rangle\langle1| - |0\rangle\langle0|\} - \frac{1}{2}E_j\{|0\rangle\langle1| + |1\rangle\langle0|\}
+\end{equation}
+ y se utiliza la notación del momento angular se llega a la expresión,
+ \begin{equation} \label{eq:angular hamiltonian}
+  \widehat{H}  = - \frac{1}{2}(B_z\hat{\sigma_z}  + B_x\hat{\sigma_x})
+\end{equation}
+donde $B_z = 4E_c(1-2n_g)$ y $B_x=E_j$.
+La ecuación \ref*{eq:angular hamiltonian} permite realizar rotaciones en el espacio del spin con las que se pueden implementar todas las operaciones sobre un solo qubit \cite{leonardo_qubits_2004}. 
+\begin{equation}\label{eq:1 rotation}
+  U_z(\alpha )= e^{i\frac{\alpha }{2}\hat{\sigma_z}} = 
+  \begin{pmatrix}
+    e^{i\frac{\alpha}{2}} & 0 \\
+    0 & e^{-i\frac{\alpha}{2}}
+  \end{pmatrix}
+\end{equation}
+cuando $B_z >> B_x$ ,  $n_g\sim 0$ y $\alpha = B_z \frac{t}{\hbar}$.
+
+\begin{equation}\label{eq:2 rotation}
+  U_x(\alpha )= e^{i\frac{\alpha }{2}\hat{\sigma_x}} = 
+  \begin{pmatrix}
+    \cos \frac{\alpha}{2}  & i\sin \frac{\alpha}{2} \\
+    i\sin \frac{\alpha}{2} & \cos \frac{\alpha}{2}
+  \end{pmatrix}
+\end{equation}
+cuando $n_g = 0$ y $\alpha = E_j \frac{t}{\hbar}$.
+De esta manera se consigue un dispositivo con las características necesarias para construir un procesador cuántico.
+
+
+\subsection{Cúbit de flujo}
+En los cúbits de flujo, por otro lado, la unión Josephson se utiliza para controlar el flujo de corriente a través de una bucle superconductor. Al aplicar un campo magnético externo, se puede cambiar la energía almacenada en el bucle, lo que permite la manipulación de estados cuánticos.
+\\
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.3\textwidth]{Qubit de flujo.png}
+  \caption{Cúbit de flujo \cite{gu_microwave_2017}}
+  \label{fig:Cúbit de flujo}
+\end{figure}
+
+\subsection{Cúbit de fase}
+Finalmente, en los cúbits de fase, la unión Josephson se utiliza para controlar la fase relativa entre dos estados cuánticos. Al aplicar un voltaje externo, se puede controlar la cantidad de corriente que fluye a través de la unión, lo que a su vez controla la fase relativa entre los estados.
+\\
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.3\textwidth]{Qubit de fase.png}
+  \caption{Cúbit de fase \cite{gu_microwave_2017}}
+  \label{fig:Cúbit de fase}
+\end{figure}
+  
+
+En los cúbits de carga, la carga en la unión Josephson determina el estado del cúbit. En los cúbits de flujo, la energía del flujo magnético a través de la unión Josephson determina el estado del cúbit. Y en los cúbits de fase, la diferencia de fase a través de la unión Josephson determina el estado del cúbit. En todos estos casos, la unión Josephson es crucial para la manipulación y la lectura de la información cuántica almacenada en el cúbit.
 
 \section{Empresas que utilizan cúbits superconductores}
 
