@@ -7,6 +7,9 @@
 \usepackage{graphicx} % Inclusión de imágenes
 \usepackage[left=3cm, right=3cm]{geometry} % Márgenes e interlineado
 \usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tabularx}
 \linespread{1.5}
 
 \bibliography{Otros cúbits superconductores}
@@ -132,11 +135,42 @@ Un cúbit de fase consta de un bucle de superconductor interrumpido por una uni�
 \end{figure} \\
 La corriente a través de la unión Josephson es proporcional al desplazamiento de fase entre los dos estados cuánticos. El estado cuántico se representa por una onda de radiofrecuencia, que oscila a una frecuencia específica. En este dispositivo, se puede cambiar la forma de la onda de radiofrecuencia mediante la aplicación de un campo magnético, que cambia la fase del estado cuántico de manera controlada. Los cambios en la corriente de polarización de la unión Josephson cambian la forma del mínimo local del potencial, y por lo tanto, el desplazamiento de fase entre los dos estados cuánticos. Esto, a su vez, cambia la diferencia de energía entre los dos estados cuánticos, permitiendo la implementación de puertas cuánticas controladas en un cúbit de fase.
 \\
-\section{Empresas que utilizan cúbits superconductores}
-[Texto de empresas que utilizan cúbits superconductores]
+\section{Comparación} 
+ Por ejemplo, los qubits de carga de flujo en lugar de transmones porque estos ofrecen ciertas ventajas, como una mayor escalabilidad y menos sensibilidad al ruido. Además, los qubits de carga de flujo permiten una mayor flexibilidad en la configuración de los circuitos cuánticos, lo que puede resultar útil en la implementación de algoritmos cuánticos complejos.\\
+ \begin{table}[ht]
+  \small
+    \begin{center}
+      \begin{tabularx}{\textwidth}{|X|X|X|X|}
+      \hline
+      \textbf{Característica} & \textbf{Transmon} & \textbf{Cúbit de flujo} & \textbf{Cúbit de fase} \\ \hline
+      Coherencia & Largo & Mediano & Largo \\
+      Escalabilidad & Escalable & No escalable & No escalable \\
+      Fabricación & Fácil & Difícil & Fácil \\
+      \hline
+      \end{tabularx}
+      \caption{Comparación de los tipos de cúbits superconductores.}
+      \label{tab:comparacion-cubits-superconductores-transpuesta}
+    \end{center}
+\end{table}\\
+ Para terminar se hará breve exposición en forma de tabla sobre las empresas mas significativas que utilizan la computación cuántica clasificándolos por el tipo de cúbit que utilizan.
+ \begin{table}[ht]
+  \begin{center}
+    \begin{tabularx}{\textwidth}{|c|c|c|}
+      \hline
+      \textbf{Empresa} & \textbf{Tipo de qubit} & \textbf{Aplicación principal} \\ \hline
+       IBM & Carga y flujo & Sistemas cuánticos, software \\
+      Google & Carga & Sistemas cuánticos y desarrollo de algoritmos \\
+      Intel & Carga y fase & Construcción de qubits \\
+      D-Wave Systems & Flujo & Annealing \\
+      Xanadu & Fase & Construcción de qubits \\ \hline
+    \end{tabularx}
+  \caption{Empresas que utilizan qubits superconductores.}
+  \label{tab:empresas-qubits-superconductores}
+  \end{center}
+\end{table}
+
 \section{Conclusiones}
 En los cúbits de carga, la carga en la unión Josephson determina el estado del cúbit. En los cúbits de flujo, la energía del flujo magnético a través de la unión Josephson determina el estado del cúbit. Y en los cúbits de fase, la diferencia de fase a través de la unión Josephson determina el estado del cúbit. En todos estos casos, la unión Josephson es crucial para la manipulación y la lectura de la información cuántica almacenada en el cúbit.
-Tabla comparación de cúbits.
-[Texto de conclusiones]
+
 \printbibliography
 \end{document}
