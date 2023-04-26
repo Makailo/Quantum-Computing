@@ -54,7 +54,7 @@ En esta sección se describen algunos de los tipos más comunes de cúbits super
 \subsection{Unión Josephson}
 
 La unión Josephson es un dispositivo compuesto por dos superconductores separados por una capa delgada de material no superconductor, conocida como barrera Josephson. En esta estructura, los pares de Cooper de los superconductores pueden atravesar la barrera gracias al efecto túnel cuántico (cita). La propiedad más importante de la unión Josephson en los cúbits es que cuando se aplica un voltaje entre los electrodos de la unión Josephson, se produce un flujo de corriente que oscila de manera periódica en el tiempo, lo que permite la generación de estados superpuestos y la realización de operaciones cuánticas lo que se denomina como efecto Josephson (cita).  \\
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.5\textwidth]{Josephson Juntion.png}
     \caption{Unión Josephson y efecto túnel \cite{noauthor_squid_nodate}}
@@ -64,7 +64,7 @@ La unión Josephson es un dispositivo compuesto por dos superconductores separad
 \subsection{Cúbit de carga}
 
 Un cúbit de carga, es un tipo de cúbit superconductor que se basa en la carga eléctrica para su funcionamiento. Está compuesto por una unión Josephson un condensador y una fuente de voltaje conectados en paralelo como se puede observar en la figura \ref{fig:Cúbit de carga}.\\
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.3\textwidth]{Qubit de carga.png}
   \caption{Cúbit de carga \cite{gu_microwave_2017}}
@@ -76,7 +76,6 @@ La unión tiene asociada una energía de acople $E_j$ que representa la energía
   \widehat{H} = 4E_c(n-n_g)^2 - E_j\cos\Theta
 \end{equation}
 Si $n_g = m+1/2$ se forman dos estados con energías $m$ y $m + 1$ que corresponderán a los estados $|1\rangle$ y $|0\rangle$. A baja temperatura los demás estados tienen una probabilidad muy baja de ser ocupados.
-
 Si se reescribe el Hamiltoniano en función de los estados cuánticos \cite{gu_microwave_2017} ,
 \begin{equation} \label{eq:ket hamiltonian}
   \widehat{H}  = 2E_c(1-2n_g)\{|1\rangle\langle1| - |0\rangle\langle0|\} - \frac{1}{2}E_j\{|0\rangle\langle1| + |1\rangle\langle0|\}
@@ -85,16 +84,15 @@ Si se reescribe el Hamiltoniano en función de los estados cuánticos \cite{gu_m
  \begin{equation} \label{eq:angular hamiltonian}
   \widehat{H}  = - \frac{1}{2}(B_z\hat{\sigma_z}  + B_x\hat{\sigma_x})
 \end{equation}
-donde $B_z = 4E_c(1-2n_g)$ y $B_x=E_j$.
-La ecuación \ref*{eq:angular hamiltonian} permite realizar rotaciones en el espacio del spin con las que se pueden implementar todas las operaciones sobre un solo qubit \cite{leonardo_qubits_2004}. 
+donde $B_z = 4E_c(1-2n_g)$ y $B_x=E_j$, la ecuación \ref*{eq:angular hamiltonian} permite realizar rotaciones en el espacio del spin con las que se pueden implementar todas las operaciones sobre un solo qubit \cite{leonardo_qubits_2004}. 
 \begin{equation}\label{eq:1 rotation}
   U_z(\alpha )= e^{i\frac{\alpha }{2}\hat{\sigma_z}} = 
   \begin{pmatrix}
     e^{i\frac{\alpha}{2}} & 0 \\
     0 & e^{-i\frac{\alpha}{2}}
   \end{pmatrix}
-\end{equation}
-cuando $B_z >> B_x$ ,  $n_g\sim 0$ y $\alpha = B_z \frac{t}{\hbar}$.
+\end{equation}\\
+cuando $B_z \gg B_x$ ,  $n_g\sim 0$ y $\alpha = B_z \frac{t}{\hbar}$.
 
 \begin{equation}\label{eq:2 rotation}
   U_x(\alpha )= e^{i\frac{\alpha }{2}\hat{\sigma_x}} = 
@@ -102,50 +100,43 @@ cuando $B_z >> B_x$ ,  $n_g\sim 0$ y $\alpha = B_z \frac{t}{\hbar}$.
     \cos \frac{\alpha}{2}  & i\sin \frac{\alpha}{2} \\
     i\sin \frac{\alpha}{2} & \cos \frac{\alpha}{2}
   \end{pmatrix}
-\end{equation}
+\end{equation}\\
 cuando $n_g = 0$ y $\alpha = E_j \frac{t}{\hbar}$.
 De esta manera se consigue un dispositivo con las características necesarias para construir un procesador cuántico.
 
-
 \subsection{Cúbit de flujo}
-En los cúbits de flujo, por otro lado, la unión Josephson se utiliza para controlar el flujo de corriente a través de una bucle superconductor. Al aplicar un campo magnético externo, se puede cambiar la energía almacenada en el bucle, lo que permite la manipulación de estados cuánticos.
-\\
-\begin{figure}[h]
+En este tipo de cúbit se rodea un flujo magnético $\Phi_x$ entre dos superconductores. El flujo modifica la fase de los superconductores y así la energía del paso de pares de Cooper mediante le efecto túnel.
+\begin{equation}
+  \label{Energia de tunelamiento}
+  E_t = -2E_j\cos(\pi\frac{\Phi_x}{\Phi_0})E_j\cos\Theta
+\end{equation}
+Donde $\Phi_0 = hc/2e$ que representa el cuanto de flujo magnético. De esta manera se logra que el campo magnético $B_X$ sea modulable. 
+\begin{equation}
+  \label{Energia magnetica modulable}
+  B_x = 2E_j\cos(\pi\frac{\Phi_x}{\Phi_0})
+\end{equation}
+En comparación con el cúbit de carga, el cúbit de flujo ofrece un control mas independiente sobre las variables y puede mantener un estado fijo en el tiempo cuando $\widehat{H} =0$.
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.3\textwidth]{Qubit de flujo.png}
   \caption{Cúbit de flujo \cite{gu_microwave_2017}}
   \label{fig:Cúbit de flujo}
 \end{figure}
-
 \subsection{Cúbit de fase}
-Finalmente, en los cúbits de fase, la unión Josephson se utiliza para controlar la fase relativa entre dos estados cuánticos. Al aplicar un voltaje externo, se puede controlar la cantidad de corriente que fluye a través de la unión, lo que a su vez controla la fase relativa entre los estados.
-\\
-\begin{figure}[h]
+Un cúbit de fase consta de un bucle de superconductor interrumpido por una unión Josephson, como se muestra en la figura \ref{fig:Cúbit de fase}. 
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.3\textwidth]{Qubit de fase.png}
   \caption{Cúbit de fase \cite{gu_microwave_2017}}
   \label{fig:Cúbit de fase}
-\end{figure}
-  
-
-En los cúbits de carga, la carga en la unión Josephson determina el estado del cúbit. En los cúbits de flujo, la energía del flujo magnético a través de la unión Josephson determina el estado del cúbit. Y en los cúbits de fase, la diferencia de fase a través de la unión Josephson determina el estado del cúbit. En todos estos casos, la unión Josephson es crucial para la manipulación y la lectura de la información cuántica almacenada en el cúbit.
-
+\end{figure} \\
+La corriente a través de la unión Josephson es proporcional al desplazamiento de fase entre los dos estados cuánticos. El estado cuántico se representa por una onda de radiofrecuencia, que oscila a una frecuencia específica. En este dispositivo, se puede cambiar la forma de la onda de radiofrecuencia mediante la aplicación de un campo magnético, que cambia la fase del estado cuántico de manera controlada. Los cambios en la corriente de polarización de la unión Josephson cambian la forma del mínimo local del potencial, y por lo tanto, el desplazamiento de fase entre los dos estados cuánticos. Esto, a su vez, cambia la diferencia de energía entre los dos estados cuánticos, permitiendo la implementación de puertas cuánticas controladas en un cúbit de fase.
+\\
 \section{Empresas que utilizan cúbits superconductores}
-
 [Texto de empresas que utilizan cúbits superconductores]
-
-\section{Comparación de los diferentes tipos de cúbits superconductores}
-
-[Texto de comparación de los diferentes tipos de cúbits superconductores]
-
 \section{Conclusiones}
-
+En los cúbits de carga, la carga en la unión Josephson determina el estado del cúbit. En los cúbits de flujo, la energía del flujo magnético a través de la unión Josephson determina el estado del cúbit. Y en los cúbits de fase, la diferencia de fase a través de la unión Josephson determina el estado del cúbit. En todos estos casos, la unión Josephson es crucial para la manipulación y la lectura de la información cuántica almacenada en el cúbit.
+Tabla comparación de cúbits.
 [Texto de conclusiones]
-
-
-\cite{barends_superconducting_2014}
 \printbibliography
-
-
-
 \end{document}
