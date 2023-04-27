@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
@@ -38,16 +38,16 @@
 
 \section{Introducción}
 
-En la computación cuántica, los cúbits son la unidad básica de información y pueden ser implementados en varios sistemas físicos. Los cúbits superconductores son considerados prometedores debido a su facilidad de control, largos tiempos de coherencia y escalabilidad. Estos cúbits están hechos de materiales superconductores y existen diferentes tipos, como los transmones, cúbits de carga, cúbits de fase y cúbits de flujo. En este trabajo se realiza una comparativa de estos tipos de cúbits superconductores, sus características, ventajas e inconvenientes. También se analizan las empresas líderes en la implementación de procesadores cuánticos y se explica por qué cada una utiliza una tecnología específica.
+En la computación cuántica, los cúbits son la unidad básica de información y pueden ser implementados en varios sistemas físicos. Los cúbits superconductores son considerados prometedores debido a su facilidad de control, largos tiempos de coherencia y escalabilidad. Estos cúbits están hechos de materiales superconductores y existen diferentes tipos, como los cúbits de carga, cúbits de fase y cúbits de flujo. En este trabajo se realiza una comparativa de estos tipos de cúbits superconductores, sus características, ventajas e inconvenientes. También se analizan las empresas líderes en la implementación de procesadores cuánticos.
 
 \section{Fundamentos teóricos de la superconductividad}
 
 La teoría de la superconductividad se basa en el modelo BCS propuesto por John Bardeen, Leon Cooper y Robert Schrieffer en 1957 \citep{bardeen_theory_1957}, que describe la formación de los pares de Cooper y cómo éstos se comportan en el material superconductor. La superconductividad es un fenómeno cuántico que se produce en algunos materiales a muy bajas temperaturas, en el que los electrones que los forman se comportan de manera coordinada y sin resistencia eléctrica. Este fenómeno se basa en la existencia de una interacción atractiva y débil \citep{bardeen_theory_1957} entre los electrones de una red cristalina que se atraen mutuamente debido a la interacción con los fonones \citep{ferrell_knight_1959}. Estos pares tienen una energía menor que los electrones individuales, lo que significa que pueden moverse a través del cristal con menos resistencia.
 
-Este fenómeno es esencial para el funcionamiento de los cúbits superconductores, ya que la ausencia de resistencia eléctrica permite que las corrientes circulen sin pérdidas y los estados cuánticos puedan mantenerse durante largos períodos de tiempo. Además, la superconductividad también permite la creación de campos magnéticos muy intensos \citep{tyler_measurements_2004}, lo que se utiliza en algunos tipos de cúbits para acoplarlos y controlar su evolución cuántica (cita).
+Este fenómeno es esencial para el funcionamiento de los cúbits superconductores, ya que los estados cuánticos puedan mantenerse durante largos períodos de tiempo. Además, la superconductividad también permite la creación de campos magnéticos muy intensos \citep{tyler_measurements_2004}, lo que se utiliza en algunos tipos de cúbits para acoplarlos y controlar su evolución cuántica (cita).
 
 \section{Tipos de cúbits superconductores}
-En esta sección se describen algunos de los tipos más comunes de cúbits superconductores, se discutirá brevemente cómo funcionan estos cúbits.
+En esta sección se describen algunos de los tipos más comunes de cúbits superconductores, de carga, de flujo y de fase, y se discutirá brevemente cómo funcionan estos cúbits.
 
 \begin{figure}[ht]
   \centering
@@ -68,7 +68,7 @@ En esta sección se describen algunos de los tipos más comunes de cúbits super
   \end{subfigure}
   \caption{Tipos de cúbits superconductores \citep{gu_microwave_2017} }
 \end{figure}
-
+Como elemento común, los tres tipos de cúbits superconductores utilizan la unión Josephson como elemento fundamental para su funcionamiento debido a que se comporta como un sistema de dos niveles. Se empezara por explicar la unión Josephson y a continuación el funcionamiento de los cúbits.
 \input{unionJosephson.tex}
 \subsection{Cúbit de carga}
 Un cúbit de carga, es un tipo de cúbit superconductor que se basa en la carga eléctrica para su funcionamiento. Está compuesto por una unión Josephson un condensador y una fuente de voltaje conectados en paralelo como se puede observar en la figura \ref{fig:Cúbit de carga}.
@@ -85,20 +85,29 @@ El estado cuántico del cúbit de flujo se mide midiendo la corriente que fluye 
 Los cúbits de flujo tienen la ventaja de tener tiempos de coherencia más largos que los cúbits de carga, lo que los hace útiles para aplicaciones en las que se requiere una mayor precisión y estabilidad en las mediciones. Sin embargo, son más difíciles de fabricar y controlar que los cúbits de carga, lo que limita su escalabilidad para su uso en computación cuántica a gran escala.
 %\input{ecuacionesFlujo.tex}
 \subsection{Cúbit de fase}
-Este tipo de cúbit esta formado por una unión Josephson polarizada por corriente en un estado de voltaje cero. Un cúbit de fase se basa en la fase de un estado cuántico para almacenar y procesar información cuántica. Utiliza una señal de microondas para manipular la fase de los electrones en una pequeña área de la superficie del chip. La fase de los electrones se puede ajustar para estar en dos posibles estados cuánticos, que se pueden utilizar para representar los estados 0 y el 1.
-
-Los cambios en la corriente de polarización de la unión Josephson cambian la forma del mínimo local del potencial, y por lo tanto, el desplazamiento de fase entre los dos estados cuánticos. Esto, a su vez, cambia la diferencia de energía entre los dos estados cuánticos, permitiendo la implementación de puertas cuánticas controladas en un cúbit de fase.
-\\
+Este tipo de cúbit esta formado por una unión Josephson polarizada por corriente en un estado de voltaje cero. Un cúbit de fase se basa en la fase de un estado cuántico para almacenar y procesar información cuántica. Utiliza una señal de microondas para manipular la fase de los electrones en una pequeña área de la superficie del chip. La fase de los electrones se puede ajustar para estar en dos posibles estados cuánticos, que se pueden utilizar para representar los estados 0 y el 1. Los cambios en la corriente de polarización de la unión Josephson cambian la forma del mínimo local del potencial, y por lo tanto, el desplazamiento de fase entre los dos estados cuánticos. Esto, a su vez, cambia la diferencia de energía entre los dos estados cuánticos, permitiendo la implementación de puertas cuánticas controladas en un cúbit de fase.
+Una ventaja clave del cúbit de fase es que tiene un acoplamiento débil con su entorno, lo que permite tiempos de coherencia más largos que los cúbits de carga y flujo. Además, su diseño se basa en una única estructura de Josephson, lo que lo hace más escalable que los cúbits de carga, que requieren múltiples componentes para su implementación.
+Sin embargo, el cúbit de fase también presenta desventajas en comparación con los otros dos tipos de cúbits. En particular, su diseño más simple y escalable viene a expensas de una mayor complejidad en el control y la medición. La mayoría de las técnicas de medición requieren el uso de microondas y métodos de control más complejos que los requeridos para los cúbits de carga y flujo. Además, el cúbit de fase tiene un acoplamiento más débil con sus vecinos, lo que puede limitar su capacidad para interactuar con otros cúbits y realizar operaciones de dos cúbits.
 \section{Comparación} 
- Por ejemplo, los cúbits de carga de flujo en lugar de transmones porque estos ofrecen ciertas ventajas, como una mayor escalabilidad y menos sensibilidad al ruido. Además, los cúbits de carga de flujo permiten una mayor flexibilidad en la configuración de los circuitos cuánticos, lo que puede resultar útil en la implementación de algoritmos cuánticos complejos.\\
+En general, los cúbits de flujo y fase tienen tiempos de relajación y coherencia más largos que los cúbits de carga, lo que les permite mantener el estado cuántico durante más tiempo y realizar operaciones más precisas. Esto se debe a que los cúbits de flujo y fase son menos susceptibles a las fluctuaciones de carga en el entorno y, por lo tanto, son menos propensos a perder el estado.
+
+Sin embargo, los cúbits de flujo y fase también tienen tiempos de operación más lentos que los cúbits de carga. Esto se debe a que las operaciones en cúbits de flujo y fase implican la manipulación de campos magnéticos y ondas de radio, que pueden ser más lentos que la manipulación directa de cargas eléctricas en los cúbits de carga.
+
+Por otro lado, los cúbits de flujo presentan una mejor escalabilidad que los de carga. Esto se debe a que los circuitos de flujo superconductor son menos sensibles a la interferencia y al ruido que los de carga. Además, la tecnología de microondas utilizada en los cúbits de flujo permite el acoplamiento entre cúbits de forma más eficiente que los métodos utilizados en los cúbits de carga.
+
+En cuanto a los cúbits de fase, su escalabilidad también es buena. Esto se debe en gran parte a la simplicidad de su diseño y a la capacidad de fabricar dispositivos con una gran cantidad de cúbits de fase en un solo chip. Además, los cúbits de fase tienen una alta fidelidad y tiempos de coherencia relativamente largos, lo que los hace ideales para aplicaciones cuánticas de alta precisión\\
  \begin{table}[ht]
   \small
     \begin{center}
       \begin{tabularx}{\textwidth}{|X|X|X|X|}
       \hline
-      \textbf{Característica} & \textbf{Transmon} & \textbf{Cúbit de flujo} & \textbf{Cúbit de fase} \\ \hline
-      Coherencia & Largo & Mediano & Largo \\
-      Escalabilidad & Escalable & No escalable & No escalable \\
+      \textbf{Característica} & \textbf{Carga} & \textbf{Flujo} & \textbf{Fase} \\ \hline
+      Coherencia & Bajo & Alto & Alto \\
+      Rapidez & Alta & Baja & Baja \\
+      Escalabilidad & Baja & Moderada & Moderada \\
+      Control & Fácil & Complejo & Complejo \\
+      Error & Bajo (redundancia) & Moderado (sensibilidad al ruido) & Bajo \\
+      Acoplamiento & & &  \\
       Fabricación & Fácil & Difícil & Fácil \\
       \hline
       \end{tabularx}
@@ -106,17 +115,18 @@ Los cambios en la corriente de polarización de la unión Josephson cambian la f
       \label{tab:comparacion-cubits-superconductores-transpuesta}
     \end{center}
 \end{table}\\
- Para terminar se hará breve exposición en forma de tabla sobre las empresas mas significativas que utilizan la computación cuántica clasificándolos por el tipo de cúbit que utilizan.
+En la actualidad, la mayoría de las empresas se inclinan hacia el desarrollo de cúbits de carga y de flujo como  por ejemplo, IBM, Google, Rigetti, mientras que otras empresas, como QuTech han optado por centrarse en el desarrollo de cúbits de fase. Cabe destacar que la elección de un tipo de cúbit sobre otro depende en gran medida de las aplicaciones específicas que se deseen desarrollar y de las características que se requieran para la implementación.
+
  \begin{table}[ht]
   \begin{center}
-    \begin{tabularx}{\textwidth}{|c|c|c|}
+    \begin{tabularx}{\textwidth}{|X|X|X|}
       \hline
       \textbf{Empresa} & \textbf{Tipo de cúbit} & \textbf{Aplicación principal} \\ \hline
-       IBM & Carga y flujo & Sistemas cuánticos, software \\
-      Google & Carga & Sistemas cuánticos y desarrollo de algoritmos \\
-      Intel & Carga y fase & Construcción de cúbits \\
+       IBM & Carga y flujo & Optimización, Química \\
+      Google & Carga y Flujo & Algoritmos, IA \\
+      Rigetti & Carga y Flujo & Nube y IA \\
       D-Wave & Flujo & Annealing \\
-      Xanadu & Fase & Construcción de cúbits \\ \hline
+      QuTech & Fase & Optimización, simulación \\ \hline
     \end{tabularx}
   \caption{Empresas que utilizan cúbits superconductores.}
   \label{tab:empresas-qubits-superconductores}
