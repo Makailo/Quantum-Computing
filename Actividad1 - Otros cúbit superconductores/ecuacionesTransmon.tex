@@ -1,0 +1,32 @@
+La unión tiene asociada una energía de acople $E_j$ que representa la energía máxima necesaria para que un par de Cooper la atraviese por efecto túnel. Se denomina $E_c$ a la energía debido a la carga de los condensadores ya que la separación entre el aislante y electrodos también actúa como un condensador y hay que incluirlo. Con el objetivo de conseguir un sistema de dos niveles, la unión Josephson se tiene que diseñar con una brecha superconductora que sea mucho mayor que $E_c$ y $E_j$ de esta manera logra el siguiente Hamiltoniano siendo $\Theta$ la diferencia de fase entre los superconductores, n el exceso de pare de Cooper en los electrodos y $n_g = C_gV_g/2e$ \citep{leonardo_qubits_2004}.
+\begin{equation} \label{eq:hamiltonian}
+  \widehat{H} = 4E_c(n-n_g)^2 - E_j\cos\Theta
+\end{equation}
+Si $n_g = m+1/2$ se forman dos estados con energías $m$ y $m + 1$ que corresponderán a los estados $|1\rangle$ y $|0\rangle$. A baja temperatura los demás estados tienen una probabilidad muy baja de ser ocupados.
+Si se reescribe el Hamiltoniano en función de los estados cuánticos \citep{gu_microwave_2017} ,
+\begin{equation} \label{eq:ket hamiltonian}
+  \widehat{H}  = 2E_c(1-2n_g)\{|1\rangle\langle1| - |0\rangle\langle0|\} - \frac{1}{2}E_j\{|0\rangle\langle1| + |1\rangle\langle0|\}
+\end{equation}
+ y se utiliza la notación del momento angular se llega a la expresión,
+ \begin{equation} \label{eq:angular hamiltonian}
+  \widehat{H}  = - \frac{1}{2}(B_z\hat{\sigma_z}  + B_x\hat{\sigma_x})
+\end{equation}
+donde $B_z = 4E_c(1-2n_g)$ y $B_x=E_j$, la ecuación \ref*{eq:angular hamiltonian} permite realizar rotaciones en el espacio del spin con las que se pueden implementar todas las operaciones sobre un solo cúbit \citep{leonardo_qubits_2004}. 
+\begin{equation}\label{eq:1 rotation}
+  U_z(\alpha )= e^{i\frac{\alpha }{2}\hat{\sigma_z}} = 
+  \begin{pmatrix}
+    e^{i\frac{\alpha}{2}} & 0 \\
+    0 & e^{-i\frac{\alpha}{2}}
+  \end{pmatrix}
+\end{equation}\\
+cuando $B_z \gg B_x$ ,  $n_g\sim 0$ y $\alpha = B_z \frac{t}{\hbar}$.
+
+\begin{equation}\label{eq:2 rotation}
+  U_x(\alpha )= e^{i\frac{\alpha }{2}\hat{\sigma_x}} = 
+  \begin{pmatrix}
+    \cos \frac{\alpha}{2}  & i\sin \frac{\alpha}{2} \\
+    i\sin \frac{\alpha}{2} & \cos \frac{\alpha}{2}
+  \end{pmatrix}
+\end{equation}\\
+cuando $n_g = 0$ y $\alpha = E_j \frac{t}{\hbar}$.
+De esta manera se consigue un dispositivo con las características necesarias para construir un procesador cuántico.

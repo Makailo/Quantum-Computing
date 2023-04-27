@@ -2,7 +2,9 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-\usepackage[backend=biber]{biblatex}
+%\usepackage[authordate]{biblatex-chicago}
+\usepackage[style=authoryear,backend=biber, natbib=true, maxcitenames=1]{biblatex}
+%\usepackage[backend=biber, ]{biblatex-chicago}
 \usepackage{csquotes}
 \usepackage{graphicx} % Inclusión de imágenes
 \usepackage[left=3cm, right=3cm]{geometry} % Márgenes e interlineado
@@ -10,6 +12,7 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{tabularx}
+\usepackage{subcaption}
 \linespread{1.5}
 
 \bibliography{Otros cúbits superconductores}
@@ -35,108 +38,59 @@
 
 \section{Introducción}
 
-La computación cuántica se presenta como una tecnología disruptiva que promete cambiar la forma en que procesamos información, gracias a su capacidad para realizar cálculos de manera exponencialmente más rápida que los sistemas clásicos. La implementación de procesadores cuánticos que permitan aprovechar las ventajas que ofrece la computación cuántica representa un desafío tecnológico significativo. Los procesadores cuánticos, debido a las peculiaridades del hardware cuántico, requieren un ambiente de trabajo controlado y altamente aislado para mantener la coherencia de los qubits, lo que se traduce en una necesidad de infraestructura muy específica y costosa. Además, la programación y el control de los procesadores cuánticos son complejos debido a la necesidad de trabajar con algoritmos cuánticos y la interpretación de los resultados de las mediciones cuánticas.
-
-Estos desafíos han llevado a un impulso investigativo en diferentes áreas, como la física, la ingeniería y la informática, en busca de soluciones innovadoras que permitan superar estas dificultades. La investigación en qubits superconductores ha avanzado considerablemente en los últimos años, y actualmente se han desarrollado diferentes tecnologías de qubits superconductores, como los qubits de carga, flujo y fase, que están siendo evaluados para su implementación en procesadores cuánticos de próxima generación.
-
-En particular, los cúbits superconductores se presentan como una de las tecnologías más prometedoras para la implementación de procesadores cuánticos. A diferencia de otros tipos de cúbits, los cúbits superconductores basados en carga, flujo y fase permiten una implementación más escalable y, por lo tanto, son objeto de investigación activa por parte de diferentes empresas e instituciones académicas.
-
-En este trabajo se realiza una comparativa de los diferentes tipos de cúbits superconductores utilizados actualmente para la implementación de procesadores cuánticos. En particular, se estudian los cúbits de carga, flujo y fase, y se comparan sus características, ventajas e inconvenientes. Además, se analizan las empresas líderes en la implementación de procesadores cuánticos y se explican las razones por las que cada una de ellas se decanta por una tecnología específica.
+En la computación cuántica, los cúbits son la unidad básica de información y pueden ser implementados en varios sistemas físicos. Los cúbits superconductores son considerados prometedores debido a su facilidad de control, largos tiempos de coherencia y escalabilidad. Estos cúbits están hechos de materiales superconductores y existen diferentes tipos, como los transmones, cúbits de carga, cúbits de fase y cúbits de flujo. En este trabajo se realiza una comparativa de estos tipos de cúbits superconductores, sus características, ventajas e inconvenientes. También se analizan las empresas líderes en la implementación de procesadores cuánticos y se explica por qué cada una utiliza una tecnología específica.
 
 \section{Fundamentos teóricos de la superconductividad}
 
-La teoría de la superconductividad se basa en el modelo BCS propuesto por John Bardeen, Leon Cooper y Robert Schrieffer en 1957 \cite{bardeen_theory_1957}, que describe la formación de los pares de Cooper y cómo éstos se comportan en el material superconductor. Desde entonces, se han descubierto muchos materiales que presentan superconductividad a diferentes temperaturas, lo que ha permitido la construcción de cúbits superconductores basados en diferentes fenómenos cuánticos, como la carga, el flujo o la fase.
+La teoría de la superconductividad se basa en el modelo BCS propuesto por John Bardeen, Leon Cooper y Robert Schrieffer en 1957 \citep{bardeen_theory_1957}, que describe la formación de los pares de Cooper y cómo éstos se comportan en el material superconductor. La superconductividad es un fenómeno cuántico que se produce en algunos materiales a muy bajas temperaturas, en el que los electrones que los forman se comportan de manera coordinada y sin resistencia eléctrica. Este fenómeno se basa en la existencia de una interacción atractiva y débil \citep{bardeen_theory_1957} entre los electrones de una red cristalina que se atraen mutuamente debido a la interacción con los fonones \citep{ferrell_knight_1959}. Estos pares tienen una energía menor que los electrones individuales, lo que significa que pueden moverse a través del cristal con menos resistencia.
 
-La superconductividad es un fenómeno cuántico que se produce en algunos materiales a muy bajas temperaturas, en el que los electrones que los forman se comportan de manera coordinada y sin resistencia eléctrica. Este fenómeno se basa en la existencia de una interacción atractiva y débil \cite{bardeen_theory_1957} entre los electrones de una red cristalina, lo que da lugar a la formación de pares de Cooper, que son los responsables del fenómeno de la superconductividad. Los pares de Cooper son dos electrones que se atraen mutuamente debido a la interacción con los fonones \cite{ferrell_knight_1959}. Estos pares tienen una energía menor que los electrones individuales, lo que significa que pueden moverse a través del cristal con menos resistencia. Es decir, los pares de Cooper pueden moverse sin disipar energía debido a las colisiones con los átomos de la red cristalina \cite{bardeen_microscopic_1957}.
-
-Este fenómeno es esencial para el funcionamiento de los cúbits superconductores, ya que la ausencia de resistencia eléctrica permite que las corrientes circulen sin pérdidas y los estados cuánticos puedan mantenerse durante largos períodos de tiempo. Además, la superconductividad también permite la creación de campos magnéticos muy intensos \cite{tyler_measurements_2004}, lo que se utiliza en algunos tipos de cúbits para acoplarlos y controlar su evolución cuántica (cita).
+Este fenómeno es esencial para el funcionamiento de los cúbits superconductores, ya que la ausencia de resistencia eléctrica permite que las corrientes circulen sin pérdidas y los estados cuánticos puedan mantenerse durante largos períodos de tiempo. Además, la superconductividad también permite la creación de campos magnéticos muy intensos \citep{tyler_measurements_2004}, lo que se utiliza en algunos tipos de cúbits para acoplarlos y controlar su evolución cuántica (cita).
 
 \section{Tipos de cúbits superconductores}
+En esta sección se describen algunos de los tipos más comunes de cúbits superconductores, se discutirá brevemente cómo funcionan estos cúbits.
 
-En esta sección se describen algunos de los tipos más comunes de cúbits superconductores, incluyendo cúbits de carga, cúbits de flujo y cúbits de fase. Se discutirá brevemente cómo funcionan estos cúbits y cuáles son sus ventajas y desventajas. Los tres tipos de cúbits superconductores utilizan la unión Josephson como elemento fundamental para su funcionamiento debido a que se comporta como un sistema de dos niveles. 
-\subsection{Unión Josephson}
-
-La unión Josephson es un dispositivo compuesto por dos superconductores separados por una capa delgada de material no superconductor, conocida como barrera Josephson. En esta estructura, los pares de Cooper de los superconductores pueden atravesar la barrera gracias al efecto túnel cuántico (cita). La propiedad más importante de la unión Josephson en los cúbits es que cuando se aplica un voltaje entre los electrodos de la unión Josephson, se produce un flujo de corriente que oscila de manera periódica en el tiempo, lo que permite la generación de estados superpuestos y la realización de operaciones cuánticas lo que se denomina como efecto Josephson (cita).  \\
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Josephson Juntion.png}
-    \caption{Unión Josephson y efecto túnel \cite{noauthor_squid_nodate}}
-    \label{fig:Unión Josephsone}
-  \end{figure}
+  \centering
+  \begin{subfigure}[b]{0.25\textwidth}
+    \includegraphics{Qubit de carga.png}
+    \caption{Cúbit de carga }
+    \label{fig:Cúbit de carga}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.25\textwidth}
+    \includegraphics{Qubit de flujo.png}
+    \caption{Cúbit de flujo}
+    \label{fig:Cúbit de flujo}
+  \end{subfigure}
+  |\begin{subfigure}[b]{0.25\textwidth}
+    \includegraphics{Qubit de fase.png}
+    \caption{Cúbit de fase}
+    \label{fig:Cúbit de fase}
+  \end{subfigure}
+  \caption{Tipos de cúbits superconductores \citep{gu_microwave_2017} }
+\end{figure}
 
+\input{unionJosephson.tex}
 \subsection{Cúbit de carga}
+Un cúbit de carga, es un tipo de cúbit superconductor que se basa en la carga eléctrica para su funcionamiento. Está compuesto por una unión Josephson un condensador y una fuente de voltaje conectados en paralelo como se puede observar en la figura \ref{fig:Cúbit de carga}.
+El estado del cúbit está determinado por el número de pares de Cooper que han cruzado la unión. En comparación con el estado de carga de átomos o moléculas individuales, el cúbit de carga se basa en un conjunto de electrones de conducción, lo que permite el control de la carga a nivel macroscópico. La superposición cuántica de estados de carga se puede lograr mediante la manipulación de la tensión de compuerta, lo que permite una mayor escalabilidad. La naturaleza macroscópica de la carga en el cúbit de carga también lo hace menos susceptible a los efectos de ruido externo, lo que mejora su capacidad de retener estados cuánticos durante períodos de tiempo más largos.
 
-Un cúbit de carga, es un tipo de cúbit superconductor que se basa en la carga eléctrica para su funcionamiento. Está compuesto por una unión Josephson un condensador y una fuente de voltaje conectados en paralelo como se puede observar en la figura \ref{fig:Cúbit de carga}.\\
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.3\textwidth]{Qubit de carga.png}
-  \caption{Cúbit de carga \cite{gu_microwave_2017}}
-  \label{fig:Cúbit de carga}
-\end{figure}
- 
-La unión tiene asociada una energía de acople $E_j$ que representa la energía máxima necesaria para que un par de Cooper la atraviese por efecto túnel. Se denomina $E_c$ a la energía debido a la carga de los condensadores ya que la separación entre el aislante y electrodos también actúa como un condensador y hay que incluirlo. Con el objetivo de conseguir un sistema de dos niveles, la unión Josephson se tiene que diseñar con una brecha superconductora $\Delta$ que sea mucho mayor que $E_c$ y $E_j$ y se logra el siguiente Hamiltoniano siendo $\Theta$ la diferencia de fase entre los superconductores, n el exceso de pare de Cooper en los electrodos y $n_g = C_gV_g/2e$ \cite{leonardo_qubits_2004}.
-\begin{equation} \label{eq:hamiltonian}
-  \widehat{H} = 4E_c(n-n_g)^2 - E_j\cos\Theta
-\end{equation}
-Si $n_g = m+1/2$ se forman dos estados con energías $m$ y $m + 1$ que corresponderán a los estados $|1\rangle$ y $|0\rangle$. A baja temperatura los demás estados tienen una probabilidad muy baja de ser ocupados.
-Si se reescribe el Hamiltoniano en función de los estados cuánticos \cite{gu_microwave_2017} ,
-\begin{equation} \label{eq:ket hamiltonian}
-  \widehat{H}  = 2E_c(1-2n_g)\{|1\rangle\langle1| - |0\rangle\langle0|\} - \frac{1}{2}E_j\{|0\rangle\langle1| + |1\rangle\langle0|\}
-\end{equation}
- y se utiliza la notación del momento angular se llega a la expresión,
- \begin{equation} \label{eq:angular hamiltonian}
-  \widehat{H}  = - \frac{1}{2}(B_z\hat{\sigma_z}  + B_x\hat{\sigma_x})
-\end{equation}
-donde $B_z = 4E_c(1-2n_g)$ y $B_x=E_j$, la ecuación \ref*{eq:angular hamiltonian} permite realizar rotaciones en el espacio del spin con las que se pueden implementar todas las operaciones sobre un solo qubit \cite{leonardo_qubits_2004}. 
-\begin{equation}\label{eq:1 rotation}
-  U_z(\alpha )= e^{i\frac{\alpha }{2}\hat{\sigma_z}} = 
-  \begin{pmatrix}
-    e^{i\frac{\alpha}{2}} & 0 \\
-    0 & e^{-i\frac{\alpha}{2}}
-  \end{pmatrix}
-\end{equation}\\
-cuando $B_z \gg B_x$ ,  $n_g\sim 0$ y $\alpha = B_z \frac{t}{\hbar}$.
-
-\begin{equation}\label{eq:2 rotation}
-  U_x(\alpha )= e^{i\frac{\alpha }{2}\hat{\sigma_x}} = 
-  \begin{pmatrix}
-    \cos \frac{\alpha}{2}  & i\sin \frac{\alpha}{2} \\
-    i\sin \frac{\alpha}{2} & \cos \frac{\alpha}{2}
-  \end{pmatrix}
-\end{equation}\\
-cuando $n_g = 0$ y $\alpha = E_j \frac{t}{\hbar}$.
-De esta manera se consigue un dispositivo con las características necesarias para construir un procesador cuántico.
-
+La operación básica de un cúbit de carga es la rotación de la carga eléctrica mediante la aplicación de un campo magnético oscilante. Esta rotación puede ser controlada para realizar diferentes operaciones cuánticas, como la puerta X (rotación de 180 grados), la puerta Y (rotación de 180 grados en otro eje) y la puerta Z (fase). 
+%\input{ecuacionesTransmon.tex}
 \subsection{Cúbit de flujo}
-En este tipo de cúbit se rodea un flujo magnético $\Phi_x$ entre dos superconductores. El flujo modifica la fase de los superconductores y así la energía del paso de pares de Cooper mediante le efecto túnel.
-\begin{equation}
-  \label{Energia de tunelamiento}
-  E_t = -2E_j\cos(\pi\frac{\Phi_x}{\Phi_0})E_j\cos\Theta
-\end{equation}
-Donde $\Phi_0 = hc/2e$ que representa el cuanto de flujo magnético. De esta manera se logra que el campo magnético $B_X$ sea modulable. 
-\begin{equation}
-  \label{Energia magnetica modulable}
-  B_x = 2E_j\cos(\pi\frac{\Phi_x}{\Phi_0})
-\end{equation}
-En comparación con el cúbit de carga, el cúbit de flujo ofrece un control mas independiente sobre las variables y puede mantener un estado fijo en el tiempo cuando $\widehat{H} =0$.
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.3\textwidth]{Qubit de flujo.png}
-  \caption{Cúbit de flujo \cite{gu_microwave_2017}}
-  \label{fig:Cúbit de flujo}
-\end{figure}
+
+Un cúbit de flujo, también conocido como SQUID (Dispositivo Interferométrico de Interferencia Cuántica Superconductora), funciona utilizando la propiedad cuántica del flujo magnético para codificar la información. Consiste en un anillo superconductor en el que circula una corriente eléctrica y se coloca en un campo magnético externo. La corriente se divide en dos caminos posibles, horario o antihorario, lo que crea una superposición de estados cuánticos. Esta superposición se puede manipular mediante campos magnéticos externos aplicados a través de las bobinas del dispositivo.
+
+El estado cuántico del cúbit de flujo se mide midiendo la corriente que fluye a través del anillo. La corriente se ve afectada por la superposición cuántica, lo que se traduce en una variación en la tensión del dispositivo. Por lo tanto, la medición de la tensión permite determinar el estado del cúbit de flujo.
+
+Los cúbits de flujo tienen la ventaja de tener tiempos de coherencia más largos que los cúbits de carga, lo que los hace útiles para aplicaciones en las que se requiere una mayor precisión y estabilidad en las mediciones. Sin embargo, son más difíciles de fabricar y controlar que los cúbits de carga, lo que limita su escalabilidad para su uso en computación cuántica a gran escala.
+%\input{ecuacionesFlujo.tex}
 \subsection{Cúbit de fase}
-Un cúbit de fase consta de un bucle de superconductor interrumpido por una unión Josephson, como se muestra en la figura \ref{fig:Cúbit de fase}. 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.3\textwidth]{Qubit de fase.png}
-  \caption{Cúbit de fase \cite{gu_microwave_2017}}
-  \label{fig:Cúbit de fase}
-\end{figure} \\
-La corriente a través de la unión Josephson es proporcional al desplazamiento de fase entre los dos estados cuánticos. El estado cuántico se representa por una onda de radiofrecuencia, que oscila a una frecuencia específica. En este dispositivo, se puede cambiar la forma de la onda de radiofrecuencia mediante la aplicación de un campo magnético, que cambia la fase del estado cuántico de manera controlada. Los cambios en la corriente de polarización de la unión Josephson cambian la forma del mínimo local del potencial, y por lo tanto, el desplazamiento de fase entre los dos estados cuánticos. Esto, a su vez, cambia la diferencia de energía entre los dos estados cuánticos, permitiendo la implementación de puertas cuánticas controladas en un cúbit de fase.
+Este tipo de cúbit esta formado por una unión Josephson polarizada por corriente en un estado de voltaje cero. Un cúbit de fase se basa en la fase de un estado cuántico para almacenar y procesar información cuántica. Utiliza una señal de microondas para manipular la fase de los electrones en una pequeña área de la superficie del chip. La fase de los electrones se puede ajustar para estar en dos posibles estados cuánticos, que se pueden utilizar para representar los estados 0 y el 1.
+
+Los cambios en la corriente de polarización de la unión Josephson cambian la forma del mínimo local del potencial, y por lo tanto, el desplazamiento de fase entre los dos estados cuánticos. Esto, a su vez, cambia la diferencia de energía entre los dos estados cuánticos, permitiendo la implementación de puertas cuánticas controladas en un cúbit de fase.
 \\
 \section{Comparación} 
- Por ejemplo, los qubits de carga de flujo en lugar de transmones porque estos ofrecen ciertas ventajas, como una mayor escalabilidad y menos sensibilidad al ruido. Además, los qubits de carga de flujo permiten una mayor flexibilidad en la configuración de los circuitos cuánticos, lo que puede resultar útil en la implementación de algoritmos cuánticos complejos.\\
+ Por ejemplo, los cúbits de carga de flujo en lugar de transmones porque estos ofrecen ciertas ventajas, como una mayor escalabilidad y menos sensibilidad al ruido. Además, los cúbits de carga de flujo permiten una mayor flexibilidad en la configuración de los circuitos cuánticos, lo que puede resultar útil en la implementación de algoritmos cuánticos complejos.\\
  \begin{table}[ht]
   \small
     \begin{center}
@@ -157,14 +111,14 @@ La corriente a través de la unión Josephson es proporcional al desplazamiento 
   \begin{center}
     \begin{tabularx}{\textwidth}{|c|c|c|}
       \hline
-      \textbf{Empresa} & \textbf{Tipo de qubit} & \textbf{Aplicación principal} \\ \hline
+      \textbf{Empresa} & \textbf{Tipo de cúbit} & \textbf{Aplicación principal} \\ \hline
        IBM & Carga y flujo & Sistemas cuánticos, software \\
       Google & Carga & Sistemas cuánticos y desarrollo de algoritmos \\
-      Intel & Carga y fase & Construcción de qubits \\
-      D-Wave Systems & Flujo & Annealing \\
-      Xanadu & Fase & Construcción de qubits \\ \hline
+      Intel & Carga y fase & Construcción de cúbits \\
+      D-Wave & Flujo & Annealing \\
+      Xanadu & Fase & Construcción de cúbits \\ \hline
     \end{tabularx}
-  \caption{Empresas que utilizan qubits superconductores.}
+  \caption{Empresas que utilizan cúbits superconductores.}
   \label{tab:empresas-qubits-superconductores}
   \end{center}
 \end{table}
@@ -172,5 +126,6 @@ La corriente a través de la unión Josephson es proporcional al desplazamiento 
 \section{Conclusiones}
 En los cúbits de carga, la carga en la unión Josephson determina el estado del cúbit. En los cúbits de flujo, la energía del flujo magnético a través de la unión Josephson determina el estado del cúbit. Y en los cúbits de fase, la diferencia de fase a través de la unión Josephson determina el estado del cúbit. En todos estos casos, la unión Josephson es crucial para la manipulación y la lectura de la información cuántica almacenada en el cúbit.
 
+\newpage
 \printbibliography
 \end{document}
